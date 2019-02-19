@@ -1,37 +1,39 @@
 import cv2
 import numpy as np
+from skimage import measure, draw
 
 
-img = cv2.imread('./images/logo.jpeg')
-img_blur = cv2.medianBlur(img, 5)
+img = cv2.imread('./images/bosch-logo.jpg')
+org_img = img.copy()
+kernel = np.ones((5,5),np.uint8)
+erosion = cv2.erode(img,kernel,iterations = 2)
+img_blur = cv2.medianBlur(erosion, 5)
 img_gray = cv2.cvtColor(img_blur, cv2.COLOR_BGR2GRAY)
 
-edge_image = cv2.Canny(img_gray, 100, 200)
-range = cv2.inRange(img_blur, (182, 182, 182), (202, 202, 202))
-cimg = img_blur
-circles = cv2.HoughCircles(img_gray,cv2.HOUGH_GRADIENT,1,20,
-                            param1=50,param2=30,minRadius=40,maxRadius=0)
+cv2.imshow('erode', erosion)
+th3 = cv2.adaptiveThreshold(img_gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
+            cv2.THRESH_BINARY,11,2)
+edge_image = cv2.Canny(th3, 175, 200)
+cv2.imshow('edge_image', edge_image)
 
-circles = np.uint16(np.around(circles))
-for i in circles[0,:]:
-    # draw the outer circle
-    cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),2)
-    # draw the center of the circle
-    cv2.circle(cimg,(i[0],i[1]),2,(0,0,255),3)
+coords = np.column_stack(np.nonzero(edge_image))
+model, inliers = measure.ransac(coords, measure.CircleModel,
+                                min_samples=3, residual_threshold=1,
+                                max_trials=1000)
 
-# contours = cv2.findContours(range, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+rr, cc = draw.circle_perimeter(int(model.params[0]),
+                               int(model.params[1]),
+                               int(model.params[2]),
+                               shape=img.shape)
 
-# for c in contours:
-#     cnt = np.array(c[0])
-#     check = cnt.copy()
-#     check = check.reshape(-1)
-#     check = [ch == -1 for ch in check]
-#     if any(check):
-#         continue
-#     rect = cv2.minAreaRect(cnt)
-#     box = cv2.boxPoints(rect)
-#     box = np.int0(box)
-#     cv2.drawContours(img, [box], 0, (0, 0, 255), 2)
-#
-cv2.imshow('image', cimg)
+zero_img = np.zeros(img.shape[:2], dtype=np.uint8)
+zero_img[rr, cc] = 255
+
+contours,hierarchy = cv2.findContours(zero_img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+cnt = contours[0]
+x, y, w, h = cv2.boundingRect(cnt)
+cv2.rectangle(org_img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+cv2.imshow('edge', zero_img)
+cv2.imshow('result', org_img)
 cv2.waitKey(0)
