@@ -1,0 +1,12 @@
+image_path: './images/bosch-logo.jpg'
+
+circle_region:
+  ksize: 3
+  blockSize: 11
+  C: 2
+  anchor: [5, 5]
+  iterations: 1
+  param1: 300
+  param2: 2
+  minRadius: 1
+  maxRadius: 100
