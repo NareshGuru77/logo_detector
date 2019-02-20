@@ -39,7 +39,9 @@ class Parameters:
 
     def read_params(self):
         detector_params = namedtuple('params', ['image_path', 'circle_region',
-                                                'vis_circle_det'])
+                                                'vis_circle_det',
+                                                'template_path', 'score_thres',
+                                                'vis_det'])
         with open(self.yaml_path, 'r') as stream:
             try:
                 parameters = yaml.load(stream)
@@ -52,5 +54,12 @@ class Parameters:
 
         detector_params.circle_region = read_circle_region_params(parameters)
         detector_params.vis_circle_det = read_vis_circle_det(parameters)
+
+        detector_params.template_path = parameters.get('template_path', None)
+        if detector_params.template_path is None:
+            raise ValueError('Please provide path to template image.')
+
+        detector_params.vis_det = parameters.get('vis_det', True)
+        detector_params.score_thres = parameters.get('score_thres', 0.3)
 
         return detector_params

@@ -1,4 +1,4 @@
-image_path: './images/bosch-logo.jpg'
+image_path: './images/manu_1.jpg'
 
 circle_region:
   ksize: 3
@@ -12,5 +12,9 @@ circle_region:
   maxRadius: 100
 
 vis_circle_det:
-  result: false
-  inter: true
+  result: true
+  inter: false
+
+template_path: './images/benz_logo.jpg'
+score_thres: 0.25
+vis_det: true
