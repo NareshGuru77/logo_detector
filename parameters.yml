@@ -1,4 +1,4 @@
-image_path: './images/manu_1.jpg'
+image_path: './images/manu_bosch.jpeg'
 
 circle_region:
   ksize: 3
@@ -15,6 +15,6 @@ vis_circle_det:
   result: true
   inter: false
 
-template_path: './images/benz_logo.jpg'
-score_thres: 0.25
+template_path: './images/bosch_logo.jpeg'
+score_thres: 0.3
 vis_det: true
