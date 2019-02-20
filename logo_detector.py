@@ -118,6 +118,6 @@ if __name__ == '__main__':
     params = parameters.read_params()
     img = cv2.imread(params.image_path)
     circle_roi, circle_results = get_circle_regions(img, params.circle_region)
-    Visualizer(params, circle_results)
+    Visualizer(params, circle_results, img)
     h_roi, _ = get_h_regions(img)
     get_lines(img)

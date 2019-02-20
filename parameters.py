@@ -21,8 +21,8 @@ def read_circle_region_params(parameters):
 
 
 def read_vis_circle_det(parameters):
-    vis_tuple = namedtuple('vis_circle_det', ['result', 'all'])
-    vis_defaults = {'result': False, 'all': False}
+    vis_tuple = namedtuple('vis_circle_det', ['result', 'inter'])
+    vis_defaults = {'result': False, 'inter': False}
     vis_circle_det = vis_tuple(**vis_defaults)
     if 'vis_circle_det' in parameters.keys():
         vis_circle_det = vis_circle_det._replace(

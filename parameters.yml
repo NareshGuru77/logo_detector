@@ -12,5 +12,5 @@ circle_region:
   maxRadius: 100
 
 vis_circle_det:
-  result: true
-  all: false
+  result: false
+  inter: true
