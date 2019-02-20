@@ -7,6 +7,10 @@ circle_region:
   anchor: [5, 5]
   iterations: 1
   param1: 300
-  param2: 2
+  param2: 30
   minRadius: 1
   maxRadius: 100
+
+vis_circle_det:
+  result: true
+  all: false
