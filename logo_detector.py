@@ -99,7 +99,7 @@ if __name__ == '__main__':
     # parse yaml path..
     parser = argparse.ArgumentParser(
         description='Get yml path.')
-    parser.add_argument('--yaml_path', default=None, type=str,
+    parser.add_argument('--yaml_path', default='./parameters.yml', type=str,
                         required=False,
                         help='Path to yaml with parameters.')
     args = parser.parse_args()
