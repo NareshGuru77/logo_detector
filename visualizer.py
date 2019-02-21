@@ -6,6 +6,11 @@ import matplotlib.pyplot as plt
 class Visualizer:
 
     def __init__(self, params, circle_proposals, detections):
+        """
+        :param params: All parameters from yaml.
+        :param circle_proposals: results from circle region proposals
+        :param detections: image with detections drawn on it.
+        """
         self.vis_c_result = params.vis_circle_det.result
         self.vis_c_inter = params.vis_circle_det.inter
         self.circle_result = circle_proposals
@@ -14,6 +19,10 @@ class Visualizer:
         self.create_visuals()
 
     def create_visuals(self):
+        """
+        Create visuals required..
+        :return:
+        """
         if self.vis_c_result or self.vis_c_inter:
             result = self.circle_result['result']
             shape = result.shape

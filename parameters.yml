@@ -1,20 +1,20 @@
 image_path: './images/test/bosch_and_benz.jpg'
 
-circle_region:
-  ksize: 3
-  blockSize: 11
-  C: 2
-  anchor: [3, 3]
-  iterations: 1
-  param1: 300
-  param2: 30
-  minRadius: 1
-  maxRadius: 100
+circle_region:  # all parameters for the detection of circle regions.
+  ksize: 3  # kernel size of medianBlur.
+  blockSize: 11 # AdaptiveThreshold: size of neighborhood region from which threshold is calculated.
+  C: 2 # AdaptiveThreshold: constant value to be subtracted from mean
+  anchor: [3, 3] # anchor dimension to get elliptical kernel for erosion.
+  iterations: 1 # number of erosion iterations.
+  param1: 300 # Canny edge detection invoked by HoughCircles: max value=param1, min value param1//2
+  param2: 30 # accumulator threshold value.
+  minRadius: 1 # minimum radius of circles to be detected.
+  maxRadius: 100 # maximum radius of circles to be detected.
 
 vis_circle_det:
-  result: true
-  inter: false
+  result: true # visualize circle region proposals.
+  inter: false # visualize intermediate results in cricle region proposal generation.
 
 template_path: './images/templates/benz_template.jpg'
-score_thres: 0.35
-vis_det: true
+score_thres: 0.35 # ssim threshold for detections.
+vis_det: true # visualize detections on image.
