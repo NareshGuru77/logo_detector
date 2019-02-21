@@ -1,9 +1,11 @@
+import argparse
+
 import cv2
 import numpy as np
+from skimage.measure import compare_ssim
+
 from parameters import Parameters
 from visualizer import Visualizer
-import argparse
-from skimage.measure import compare_ssim
 
 
 def get_circle_regions(image, params):
