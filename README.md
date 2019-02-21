@@ -26,16 +26,27 @@ The detector works in two stages. <br />
 1. Region proposals generation.
 2. Region classification.
 
-#### 1. Region proposals generation:
+#### 1. Region proposals generation
 A set of square regions where a circle exists in the input image is detected and proposed as potential regions where the logo could be found. <br />
 An example where the detected circles are shown in pink and the proposed square regions are shown in green:
 
+* **Circle proposals**<br/><br/>
+![Circle proposals](https://github.com/NareshGuru77/logo_detector/blob/master/results/region_proposals.jpg)
 
-#### 2. Region classification:
+#### 2. Region classification
 Each of the proposed regions is compared with a template image and a score is calculated using ssim (structured similarity index). Regions with scores above a certain threshold are classified as regions with the required logo. <br />
 
 
-#### Results:
+#### Results
+The detected logos are indicated with green squares and the ssim score is written inside the square in brown.
+##### 1. Bosch logo
+![Circle proposals](https://github.com/NareshGuru77/logo_detector/blob/master/results/bosch_result.jpg)
 
+##### 2. Benz logo
+![Circle proposals](https://github.com/NareshGuru77/logo_detector/blob/master/results/benz_result.jpg)
 
-
+#### Limitations
+This is a limited example with a naive approach. Several limitations could be identified. Some limitations are listed here: <br />
+1. Only the front facing viewpoint of the logos can be detected.
+2. Different lightings, brightness/contrast adjustments will lead to failures.
+3. Only logos in silver color as in template image is likely to be detected.
