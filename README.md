@@ -39,7 +39,7 @@ Region proposal            , SSIM,   &nbsp;&nbsp;&nbsp;&nbsp; Template, &nbsp;&n
 :---------------------:|:------:|:--------------------:|:-----------------------------: <br />
 <img src="https://github.com/NareshGuru77/logo_detector/blob/master/results/region_w.jpg" width="100" height="100"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/NareshGuru77/logo_detector/blob/master/results/template_w.jpg" width="100" height="100"> < threshold : ignored <br />
 <br />
-<img src="https://github.com/NareshGuru77/logo_detector/blob/master/results/region_c.jpg" width="100" height="100"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/NareshGuru77/logo_detector/blob/master/results/template_c.jpg" width="100" height="100"> < threshold : detection
+<img src="https://github.com/NareshGuru77/logo_detector/blob/master/results/region_c.jpg" width="100" height="100"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/NareshGuru77/logo_detector/blob/master/results/template_c.jpg" width="100" height="100"> > threshold : detection
 
 #### Results
 The detected logos are indicated with green squares and the ssim score is written inside the square in brown.
@@ -54,3 +54,5 @@ This is a limited example with a naive approach. Several limitations could be id
 1. Only the front facing viewpoint of the logos can be detected.
 2. Different lightings, brightness/contrast adjustments will lead to failures.
 3. Only logos in silver color as in template image is likely to be detected.
+4. Finding the right set of parameter values is difficult. For instance, bosch logo in bosch_1.jpg and bosch_2.jpg will be detected if elliptical kernel size is changed to 5, 5 (anchor parameter in parameters.yml). This same change, will also avoid false positives in benz_1.jpg and benz_4.jpg.
+
