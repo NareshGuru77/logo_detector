@@ -34,7 +34,7 @@ An example where the detected circles are shown in pink and the proposed square 
 ![Circle proposals](https://github.com/NareshGuru77/logo_detector/blob/master/results/region_proposals.jpg)
 
 #### 2. Region classification
-Each of the proposed regions is compared with a template image and a score is calculated using ssim (structured similarity index). Regions with scores above a certain threshold are classified as regions with the required logo. <br />
+Each of the proposed regions is compared with a template image and a score is calculated using ssim (Structural Similarity Index). Regions with scores above a certain threshold are classified as regions with the required logo. <br />
 Region proposal            , SSIM,   &nbsp;&nbsp;&nbsp;&nbsp; Template, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Result <br />
 :---------------------:|:------:|:--------------------:|:-----------------------------: <br />
 <img src="https://github.com/NareshGuru77/logo_detector/blob/master/results/region_w.jpg" width="100" height="100"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/NareshGuru77/logo_detector/blob/master/results/template_w.jpg" width="100" height="100"> < threshold : ignored <br />
